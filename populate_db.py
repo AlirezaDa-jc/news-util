@@ -13,7 +13,6 @@ newsDb = client.collections.get("News_db")
 
 
 def preprocess_articles(articles: List[Dict]) -> List[Dict]:
-    """Preprocess articles to reduce memory usage and optimize for GPU"""
     processed = []
     for article in articles:
         processed.append(article)
@@ -23,7 +22,6 @@ def preprocess_articles(articles: List[Dict]) -> List[Dict]:
 def process_batch(articles: List[Dict[Any, Any]]) -> None:
     """Process a batch of articles with GPU optimization"""
     try:
-        # Larger batch size for GPU processing
         with newsDb.batch.dynamic() as batch:
             for article in articles:
                 date = article["date"]
@@ -50,8 +48,7 @@ def import_with_batching(file_path: str, batch_size: int = 128) -> None:
         articles = news_data.to_dict('records')
         articles = preprocess_articles(articles)
 
-        # Optimize workers for i5 13400 (6P + 4E cores)
-        num_workers = 15  # Using most of the physical cores
+        num_workers = 15
 
         print(f"Starting import with {num_workers} workers and batch size {batch_size}")
         start_time = time.time()

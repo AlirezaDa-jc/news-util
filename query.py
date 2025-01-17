@@ -19,4 +19,4 @@ print(response.generated)
 # for obj in response.objects:
 #     print(json.dumps(obj.properties, indent=2))
 
-client.close()  # Free up resources
+client.close()

@@ -1,0 +1,2 @@
+ollama create minilm-gpu --quantize q4_K_M -f Modelfile
+ollama create news-llama3 -f llama.Modelfile

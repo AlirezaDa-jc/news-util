@@ -1,0 +1,8 @@
+FROM llama3.2:latest
+PARAMETER temperature 0.3
+PARAMETER num_ctx 4096
+PARAMETER top_p 0.6
+PARAMETER repeat_penalty 1.2
+PARAMETER num_thread 12
+PARAMETER stop "</answer>"
+PARAMETER stop "Question:"
